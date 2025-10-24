@@ -1,0 +1,32 @@
+{
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process comments"],
+      "managerFilePatterns": ["/^apps/.+\\.py$/"],
+      "matchStrings": [
+        "# renovate source=(?<datasource>\\S+) name=(?<depName>\\S+)\n.*?:\\s*\"(?<currentValue>[^:\\s]+)\"",
+        "# renovate source=(?<datasource>\\S+) name=(?<depName>\\S+)\n.*?:\\s*\"\\S+:(?<currentValue>[^:\\s]+)\""
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": ["Process helm in version.toml"],
+      "managerFilePatterns": ["/^apps/versions\\.toml$/"],
+      "matchStrings": [
+        "\\[(?<depName>\\S+)\\]\nversion\\s*=\\s*\"(?<currentVersion>\\S+)\"\nhelm\\s*=\\s*\"(?<registryUrl>\\S+)\"(?:\\n\\n|\n$|$)\"",
+        "\\[\\S+\\]\nversion\\s*=\\s*\"(?<currentVersion>\\S+)\"\nhelm\\s*=\\s*\"(?<registryUrl>\\S+)\"\nchart\\s*=\\s*\"(?<depName>\\S+)\""
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "description": ["Process github in version.toml"],
+      "managerFilePatterns": ["/^apps/versions\\.toml$/"],
+      "matchStrings": [
+        "\\[\\S+\\]\nversion\\s*=\\s*\"(?<currentVersion>\\S+)\"\nrepo_url\\s*=\\s*\"https:\\/\\/github.com\\/(?<depName>[^\\/\\s]+\/[^\\/\\s\\.]+)\\S*\""
+      ],
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}
