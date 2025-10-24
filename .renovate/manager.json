@@ -14,18 +14,27 @@
       "description": "Process helm in version.toml",
       "managerFilePatterns": ["/^apps/versions\\.toml$/"],
       "matchStrings": [
-        "\\[(?<depName>[^\\]]+)\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nhelm\\s*=\\s*\"(?<registryUrl>[^\"]+)\"(?:\n\n|\n$|$)",
-        "\\[[^\\]]+]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nhelm\\s*=\\s*\"(?<registryUrl>[^\"]+)\"\nchart\\s*=\\s*\"(?<depName>[^\"]+)\""
+        "\\[(?<depName>[^\\]]+)\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nhelm\\s*=\\s*\"(?<registryUrl>http[^\"]+)\"(?:\n\n|\n$|$)",
+        "\\[[^\\]]+\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nhelm\\s*=\\s*\"(?<registryUrl>http[^\"]+)\"\nchart\\s*=\\s*\"(?<depName>[^\"]+)\""
       ],
       "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "description": "Process docker in version.toml",
+      "managerFilePatterns": ["/^apps/versions\\.toml$/"],
+      "matchStrings": [
+        "\\[[^\\]]+\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nhelm\\s*=\\s*\"oci://(?<depName>[^\"]+)\""
+      ],
+      "datasourceTemplate": "docker"
     },
     {
       "customType": "regex",
       "description": "Process github in version.toml",
       "managerFilePatterns": ["/^apps/versions\\.toml$/"],
       "matchStrings": [
-        "\\[[^\\]]+]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\ngithub\\s*=\\s*\"https:\\/\\/github.com\\/(?<depName>[^\\/]+\/[^\\/\"\\.]+)[^\"]*\"",
-        "\\[[^\\]]+]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nrepo_url\\s*=\\s*\"https:\\/\\/github.com\\/(?<depName>[^\\/]+\/[^\\/\"\\.]+)[^\"]*\""
+        "\\[[^\\]]+\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\ngithub\\s*=\\s*\"https:\\/\\/github.com\\/(?<depName>[^\\/]+\/[^\\/\"\\.]+)[^\"]*\"",
+        "\\[[^\\]]+\\]\nversion\\s*=\\s*\"(?<currentValue>[^\"]+)\"\nrepo_url\\s*=\\s*\"https:\\/\\/github.com\\/(?<depName>[^\\/]+\/[^\\/\"\\.]+)[^\"]*\""
       ],
       "datasourceTemplate": "github-releases"
     }

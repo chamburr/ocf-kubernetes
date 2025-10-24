@@ -9,7 +9,7 @@
     {
       "matchDatasources": ["docker"],
       "semanticCommitScope": "docker",
-      "commitMessageTopic": "{{depName}}"
+      "commitMessageTopic": "{{{replace '[^/]+/' '' depName}}}"
     },
     {
       "matchDatasources": ["github-actions"],
