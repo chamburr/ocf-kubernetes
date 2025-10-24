@@ -30,7 +30,7 @@ helm = "https://helm.cilium.io/"
 
 [contour]
 version = "21.0.12"
-helm = "https://charts.bitnami.com/bitnami"
+helm = "oci://registry-1.docker.io/bitnamicharts/contour"
 
 [coredns]
 version = "1.43.1"
@@ -47,7 +47,7 @@ helm = "https://kedacore.github.io/charts"
 
 [keycloak]
 version = "24.9.0"
-helm = "https://charts.bitnami.com/bitnami"
+helm = "oci://registry-1.docker.io/bitnamicharts/keycloak"
 
 [kubevirt]
 version = "v1.6.0"
@@ -55,7 +55,7 @@ github = "https://github.com/kubevirt/kubevirt"
 
 [metallb]
 version = "6.4.20"
-helm = "https://charts.bitnami.com/bitnami"
+helm = "oci://registry-1.docker.io/bitnamicharts/metallb"
 
 [metrics-server]
 version = "3.13.0"
@@ -72,7 +72,7 @@ chart = "kube-prometheus-stack"
 
 [rabbitmq]
 version = "4.4.29"
-helm = "https://charts.bitnami.com/bitnami"
+helm = "oci://registry-1.docker.io/bitnamicharts/rabbitmq"
 chart = "rabbitmq-cluster-operator"
 
 [rook]
