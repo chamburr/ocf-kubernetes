@@ -21,8 +21,6 @@ on:
       - main
     paths:
       - .renovate/**.json
-  schedule:
-    - cron: 0 * * * *
 
 jobs:
   renovate:
